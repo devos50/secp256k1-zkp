@@ -727,7 +727,7 @@ echo "  module extrakeys        = $enable_module_extrakeys"
 echo "  module schnorrsig       = $enable_module_schnorrsig"
 echo "  module ecdsa-s2c        = $enable_module_ecdsa_s2c"
 echo "  module ecdsa-adaptor    = $enable_module_ecdsa_adaptor"
-echo "  module frost            = $enable_module_ecdsa_adaptor"
+echo "  module frost            = $enable_module_frost"
 echo
 echo "  asm                     = $set_asm"
 echo "  bignum                  = $set_bignum"
