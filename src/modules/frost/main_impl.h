@@ -142,7 +142,7 @@ int secp256k1_frost_pubkey_combine(const secp256k1_context *ctx, secp256k1_scrat
     return 1;
 }
 
-static void secp256k1_frost_lagrange_coefficient(secp256k1_scalar *r, const size_t *participant_indexes, const size_t n_participants, const size_t my_index) {
+void secp256k1_frost_lagrange_coefficient(secp256k1_scalar *r, const size_t *participant_indexes, const size_t n_participants, const size_t my_index) {
     size_t i;
     secp256k1_scalar num;
     secp256k1_scalar den;
@@ -204,7 +204,7 @@ static void secp256k1_nonce_function_frost_sha256_tagged_aux(secp256k1_sha256 *s
 /* algo argument for nonce_function_frost to derive the nonce using a tagged hash function. */
 static const unsigned char frost_algo[9] = "FROST/non";
 
-static int secp256k1_nonce_function_frost(secp256k1_frost_secnonce *k, const unsigned char *session_id, const unsigned char *key32, const unsigned char *msg32, const unsigned char *combined_pk, const unsigned char *algo, size_t algolen, void *data) {
+int secp256k1_nonce_function_frost(secp256k1_frost_secnonce *k, const unsigned char *session_id, const unsigned char *key32, const unsigned char *msg32, const unsigned char *combined_pk, const unsigned char *algo, size_t algolen, void *data) {
     secp256k1_sha256 sha;
     unsigned char masked_key[32];
     unsigned char rngseed[32];
@@ -252,6 +252,10 @@ static int secp256k1_nonce_function_frost(secp256k1_frost_secnonce *k, const uns
     secp256k1_scalar_get_b32(&k->data[32], &rand[1]);
 
     return 1;
+}
+
+void secp256k1_ecmult_gen_with_ctx(const secp256k1_context* ctx, secp256k1_gej *r, const secp256k1_scalar *a) {
+    secp256k1_ecmult_gen(&ctx->ecmult_gen_ctx, r, a);
 }
 
 #endif

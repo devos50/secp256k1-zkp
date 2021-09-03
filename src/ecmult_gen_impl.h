@@ -22,11 +22,11 @@
     static const size_t SECP256K1_ECMULT_GEN_CONTEXT_PREALLOCATED_SIZE = 0;
 #endif
 
-static void secp256k1_ecmult_gen_context_init(secp256k1_ecmult_gen_context *ctx) {
+void secp256k1_ecmult_gen_context_init(secp256k1_ecmult_gen_context *ctx) {
     ctx->prec = NULL;
 }
 
-static void secp256k1_ecmult_gen_context_build(secp256k1_ecmult_gen_context *ctx, void **prealloc) {
+void secp256k1_ecmult_gen_context_build(secp256k1_ecmult_gen_context *ctx, void **prealloc) {
 #ifndef USE_ECMULT_STATIC_PRECOMPUTATION
     secp256k1_ge prec[ECMULT_GEN_PREC_N * ECMULT_GEN_PREC_G];
     secp256k1_gej gj;

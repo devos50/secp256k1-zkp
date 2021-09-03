@@ -60,7 +60,7 @@ static const secp256k1_ge secp256k1_ge_const_g = SECP256K1_GE_CONST(
 static const secp256k1_fe secp256k1_fe_const_b = SECP256K1_FE_CONST(0, 0, 0, 0, 0, 0, 0, 7);
 #endif
 
-static void secp256k1_ge_set_gej_zinv(secp256k1_ge *r, const secp256k1_gej *a, const secp256k1_fe *zi) {
+void secp256k1_ge_set_gej_zinv(secp256k1_ge *r, const secp256k1_gej *a, const secp256k1_fe *zi) {
     secp256k1_fe zi2;
     secp256k1_fe zi3;
     secp256k1_fe_sqr(&zi2, zi);
@@ -86,7 +86,7 @@ static void secp256k1_ge_neg(secp256k1_ge *r, const secp256k1_ge *a) {
     secp256k1_fe_negate(&r->y, &r->y, 1);
 }
 
-static void secp256k1_ge_set_gej(secp256k1_ge *r, secp256k1_gej *a) {
+void secp256k1_ge_set_gej(secp256k1_ge *r, secp256k1_gej *a) {
     secp256k1_fe z2, z3;
     r->infinity = a->infinity;
     secp256k1_fe_inv(&a->z, &a->z);

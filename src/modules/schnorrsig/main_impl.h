@@ -108,7 +108,7 @@ static void secp256k1_schnorrsig_sha256_tagged(secp256k1_sha256 *sha) {
     sha->bytes = 64;
 }
 
-static void secp256k1_schnorrsig_challenge(secp256k1_scalar* e, const unsigned char *r32, const unsigned char *msg32, const unsigned char *pubkey32)
+void secp256k1_schnorrsig_challenge(secp256k1_scalar* e, const unsigned char *r32, const unsigned char *msg32, const unsigned char *pubkey32)
 {
     unsigned char buf[32];
     secp256k1_sha256 sha;

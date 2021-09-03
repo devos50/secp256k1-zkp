@@ -73,6 +73,21 @@ SECP256K1_API int secp256k1_frost_pubkey_combine(
     const secp256k1_pubkey *pubkeys
 ) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(3) SECP256K1_ARG_NONNULL(4);
 
+SECP256K1_API void secp256k1_frost_lagrange_coefficient(
+    secp256k1_scalar *r,
+    const size_t *participant_indexes,
+    const size_t n_participants,
+    const size_t my_index
+);
+
+SECP256K1_API void secp256k1_ecmult_gen_with_ctx(const secp256k1_context* ctx, secp256k1_gej *r, const secp256k1_scalar *a);
+
+SECP256K1_API void secp256k1_pubkey_save(secp256k1_pubkey* pubkey, secp256k1_ge* ge);
+
+SECP256K1_API int secp256k1_nonce_function_frost(secp256k1_frost_secnonce *k, const unsigned char *session_id, const unsigned char *key32, const unsigned char *msg32, const unsigned char *combined_pk, const unsigned char *algo, size_t algolen, void *data);
+
+SECP256K1_API void secp256k1_schnorrsig_challenge(secp256k1_scalar* e, const unsigned char *r32, const unsigned char *msg32, const unsigned char *pubkey32);
+
 #ifdef __cplusplus
 }
 #endif
